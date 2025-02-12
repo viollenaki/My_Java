@@ -1,6 +1,3 @@
-import java.time.*;
-
-
 class Book{
     String name;
     String author;
@@ -13,7 +10,7 @@ class Book{
     }
 
     public String getInfo(){
-        return this.name + ", " + this.author + ", " + this.publishedYear;
+        return "Title: " +this.name + "\nAuthor: " + this.author + " \nPublished Year: " + this.publishedYear;
     }
 
     public void getDetails(){
@@ -35,7 +32,7 @@ class PrintedBook extends Book{
 
     @Override
     public String getInfo(){
-        return super.getInfo() + ", " + this.NumberOfPages + ", " + this.publisher;
+        return  "Printed Book info \n" + super.getInfo() + " \nNumber of pages: " + this.NumberOfPages + " \nPublisher: " + this.publisher;
     }
 
     @Override
@@ -75,7 +72,7 @@ class EBook extends Book{
 
     @Override
     public String getInfo(){
-        return super.getInfo() + ", " + this.SizeOfBook + ", " + this.fileFormat;
+        return "Ebook info\n" + super.getInfo() + "\nSize of book: " + this.SizeOfBook + "\nFile format " + this.fileFormat;
     }
 
     @Override
