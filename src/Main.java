@@ -10,7 +10,7 @@ class Book{
     }
 
     public String getInfo(){
-        return "Title: " +this.name + "\nAuthor: " + this.author + " \nPublished Year: " + this.publishedYear;
+        return "______________________________________\n" + "Title: " +this.name + "\nAuthor: " + this.author + " \nPublished Year: " + this.publishedYear;
     }
 
     public void getDetails(){
@@ -41,7 +41,7 @@ class PrintedBook extends Book{
     }
 
     public void bookType(){
-        System.out.println("This is a printed book");
+        System.out.println("this is a printed book");
     }
 
     public void printingBook() throws InterruptedException {
@@ -49,7 +49,7 @@ class PrintedBook extends Book{
         Thread.sleep(5000); // Sleeps for 1 second
         System.out.println(this.getInfo());
         Thread.sleep(1000);
-        System.out.println("Book is printed.");
+        System.out.println("Book is printed");
     }
 
     public void getPrice(){
@@ -72,7 +72,7 @@ class EBook extends Book{
 
     @Override
     public String getInfo(){
-        return "Ebook info\n" + super.getInfo() + "\nSize of book: " + this.SizeOfBook + "\nFile format " + this.fileFormat;
+        return "______________________________________\n" + "Ebook info\n" + super.getInfo() + "\nSize of book: " + this.SizeOfBook +"MB" + "\nFile format " + this.fileFormat;
     }
 
     @Override
@@ -81,7 +81,7 @@ class EBook extends Book{
     }
 
     public void bookType(){
-        System.out.println("This is an e-book");
+        System.out.println("this is e-book");
     }
 
     public void getPrice(){
@@ -94,10 +94,10 @@ class EBook extends Book{
 
 class Main{
     public static void main(String[] args) {
-        Book book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925);
+        Book book1 = new Book("The white pages of History", "Rozetta Aitmatova", 2014);
         book1.getDetails();
 
-        PrintedBook book2 = new PrintedBook("The Catcher in the Rye", "JD Salinger", 1951, 234, "Little, Brown and Company");
+        PrintedBook book2 = new PrintedBook("The broken sword", "Chyngyz Aitmatov", 1990, 234, "Kyrgyz News");
         book2.getDetails();
         book2.bookType();
         book2.getPrice();
@@ -107,7 +107,7 @@ class Main{
             throw new RuntimeException(e);
         }
 
-        EBook book3 = new EBook("The Hobbit", "J. R. R. Tolkien", 1937, 400, "epub");
+        EBook book3 = new EBook("By myself", "Marcus Aurelius", -100, 15, "pdf");
         book3.getDetails();
         book3.bookType();
         book3.getPrice();
