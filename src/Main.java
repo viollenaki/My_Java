@@ -1,118 +1,77 @@
-class Book{
-    String name;
-    String author;
-    int publishedYear;
+// Step 1: Abstract Class Employee
+abstract class Employee {
+    protected String name;
+    protected int id;
+    protected double baseSalary;
 
-    Book(String name, String author, int publishedYear){
+    public Employee(String name, int id, double baseSalary) {
         this.name = name;
-        this.author = author;
-        this.publishedYear = publishedYear;
+        this.id = id;
+        this.baseSalary = baseSalary;
     }
 
-    public String getInfo(){
-        return "______________________________________\n" + "Title: " +this.name + "\nAuthor: " + this.author + " \nPublished Year: " + this.publishedYear;
-    }
+    public abstract double calculateSalary();
 
-    public void getDetails(){
-        System.out.println(this.getInfo());
+    public void displayEmployeeInfo() {
+        System.out.println("Employee ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + calculateSalary());
     }
 }
 
-
-class PrintedBook extends Book{
-    int NumberOfPages;
-    String publisher;
-    int price = this.NumberOfPages * 10;
-
-    PrintedBook(String name, String author, int publishedYear, int NumberOfPages, String publisher){
-        super( name, author, publishedYear);
-        this.NumberOfPages = NumberOfPages;
-        this.publisher = publisher;
-    }
-
-    @Override
-    public String getInfo(){
-        return  "Printed Book info \n" + super.getInfo() + " \nNumber of pages: " + this.NumberOfPages + " \nPublisher: " + this.publisher;
-    }
-
-    @Override
-    public void getDetails(){
-        System.out.println(this.getInfo());
-    }
-
-    public void bookType(){
-        System.out.println("this is a printed book");
-    }
-
-    public void printingBook() throws InterruptedException {
-        System.out.println("Printing the book...");
-        Thread.sleep(5000); // Sleeps for 1 second
-        System.out.println(this.getInfo());
-        Thread.sleep(1000);
-        System.out.println("Book is printed");
-    }
-
-    public void getPrice(){
-        System.out.println(this.price);
-    }
-
-
+// Step 2: Payable Interface
+interface Payable {
+    double getPaymentAmount();
 }
 
-class EBook extends Book{
-    double SizeOfBook;
-    String fileFormat;
-    double price = this.SizeOfBook * 10;
-
-    EBook(String name, String author, int publishedYear, double SizeOfBook, String fileFormat){
-        super( name, author, publishedYear);
-        this.SizeOfBook = SizeOfBook;
-        this.fileFormat = fileFormat;
+// Step 3: FullTimeEmployee Class
+class FullTimeEmployee extends Employee implements Payable {
+    public FullTimeEmployee(String name, int id, double baseSalary) {
+        super(name, id, baseSalary);
     }
 
     @Override
-    public String getInfo(){
-        return "______________________________________\n" + "Ebook info\n" + super.getInfo() + "\nSize of book: " + this.SizeOfBook +"MB" + "\nFile format " + this.fileFormat;
+    public double calculateSalary() {
+        return baseSalary * 1.2; // 20% extra
     }
 
     @Override
-    public void getDetails(){
-        System.out.println(this.getInfo());
+    public double getPaymentAmount() {
+        return calculateSalary();
     }
-
-    public void bookType(){
-        System.out.println("this is e-book");
-    }
-
-    public void getPrice(){
-        System.out.println(this.price);
-    }
-
-
 }
 
+// Step 4: ContractEmployee Class
+class ContractEmployee extends Employee implements Payable {
+    private double hourlyRate;
+    private int hoursWorked;
 
-class Main{
+    public ContractEmployee(String name, int id, double hourlyRate, int hoursWorked) {
+        super(name, id, 0); // Base salary not applicable for contract employees
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
+
+    @Override
+    public double calculateSalary() {
+        return hourlyRate * hoursWorked;
+    }
+
+    @Override
+    public double getPaymentAmount() {
+        return calculateSalary();
+    }
+}
+
+// Step 5: Main Class to Test the System
+public class Main {
     public static void main(String[] args) {
-        Book book1 = new Book("The white pages of History", "Rozetta Aitmatova", 2014);
-        book1.getDetails();
+        FullTimeEmployee fullTimeEmp = new FullTimeEmployee("Alice", 101, 5000);
+        ContractEmployee contractEmp = new ContractEmployee("Bob", 102, 50, 160);
 
-        PrintedBook book2 = new PrintedBook("The broken sword", "Chyngyz Aitmatov", 1990, 234, "Kyrgyz News");
-        book2.getDetails();
-        book2.bookType();
-        book2.getPrice();
-        try {
-            book2.printingBook();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        EBook book3 = new EBook("By myself", "Marcus Aurelius", -100, 15, "pdf");
-        book3.getDetails();
-        book3.bookType();
-        book3.getPrice();
-
+        System.out.println("Full-Time Employee Details:");
+        fullTimeEmp.displayEmployeeInfo();
+        System.out.println("\nContract Employee Details:");
+        contractEmp.displayEmployeeInfo();
     }
-
 }
-
