@@ -1,13 +1,12 @@
-// Step 1: Abstract Class Employee
 abstract class Employee {
     protected String name;
     protected int id;
-    protected double baseSalary;
+    protected double base;
 
-    public Employee(String name, int id, double baseSalary) {
+    public Employee(String name, int id, double base) {
         this.name = name;
         this.id = id;
-        this.baseSalary = baseSalary;
+        this.base = base;
     }
 
     public abstract double calculateSalary();
@@ -19,20 +18,18 @@ abstract class Employee {
     }
 }
 
-// Step 2: Payable Interface
 interface Payable {
     double getPaymentAmount();
 }
 
-// Step 3: FullTimeEmployee Class
 class FullTimeEmployee extends Employee implements Payable {
-    public FullTimeEmployee(String name, int id, double baseSalary) {
-        super(name, id, baseSalary);
+    public FullTimeEmployee(String name, int id, double base) {
+        super(name, id, base);
     }
 
     @Override
     public double calculateSalary() {
-        return baseSalary * 1.2; // 20% extra
+        return base * 1.2; 
     }
 
     @Override
@@ -41,13 +38,12 @@ class FullTimeEmployee extends Employee implements Payable {
     }
 }
 
-// Step 4: ContractEmployee Class
 class ContractEmployee extends Employee implements Payable {
     private double hourlyRate;
     private int hoursWorked;
 
     public ContractEmployee(String name, int id, double hourlyRate, int hoursWorked) {
-        super(name, id, 0); // Base salary not applicable for contract employees
+        super(name, id, 0); 
         this.hourlyRate = hourlyRate;
         this.hoursWorked = hoursWorked;
     }
@@ -63,7 +59,6 @@ class ContractEmployee extends Employee implements Payable {
     }
 }
 
-// Step 5: Main Class to Test the System
 public class Main {
     public static void main(String[] args) {
         FullTimeEmployee fullTimeEmp = new FullTimeEmployee("Alice", 101, 5000);
