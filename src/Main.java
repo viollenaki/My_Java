@@ -23,13 +23,15 @@ interface Payable {
 }
 
 class FullTimeEmployee extends Employee implements Payable {
+
+
     public FullTimeEmployee(String name, int id, double base) {
-        super(name, id, base);
+        super(name, id, base*1.2);    
     }
 
     @Override
     public double calculateSalary() {
-        return base * 1.2; 
+        return base; 
     }
 
     @Override
@@ -62,11 +64,11 @@ class ContractEmployee extends Employee implements Payable {
 public class Main {
     public static void main(String[] args) {
         Employee[] employees = new Employee[2];
-        employees[0] = new FullTimeEmployee("John Doe", 1, 1000);
-        employees[1] = new ContractEmployee("Jane Doe", 2, 20, 40);
+        employees[0] = new FullTimeEmployee("Emil", 1, 10000);
+        employees[1] = new ContractEmployee("Akbar", 2, 20, 40);
         for (Employee e : employees){
             e.displayEmployeeInfo();
-            System.out.println("Payment Amount: " + e.calculateSalary());
+            System.out.println("payment Amount--- " + e.calculateSalary());
         }
     }
 }
