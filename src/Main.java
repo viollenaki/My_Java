@@ -12,9 +12,9 @@ abstract class Employee {
     public abstract double calculateSalary();
 
     public void displayEmployeeInfo() {
-        System.out.println("Employee ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Salary: " + calculateSalary());
+        System.out.println("Employee ID--- " + id);
+        System.out.println("Name--- " + name);
+        System.out.println("Salary--- " + calculateSalary());
     }
 }
 
@@ -39,18 +39,18 @@ class FullTimeEmployee extends Employee implements Payable {
 }
 
 class ContractEmployee extends Employee implements Payable {
-    private double hourlyRate;
-    private int hoursWorked;
+    private double hourly;
+    private int hours;
 
-    public ContractEmployee(String name, int id, double hourlyRate, int hoursWorked) {
+    public ContractEmployee(String name, int id, double hourly, int hours) {
         super(name, id, 0); 
-        this.hourlyRate = hourlyRate;
-        this.hoursWorked = hoursWorked;
+        this.hourly = hourly;
+        this.hours = hours;
     }
 
     @Override
     public double calculateSalary() {
-        return hourlyRate * hoursWorked;
+        return hourly * hours;
     }
 
     @Override
@@ -61,12 +61,12 @@ class ContractEmployee extends Employee implements Payable {
 
 public class Main {
     public static void main(String[] args) {
-        FullTimeEmployee fullTimeEmp = new FullTimeEmployee("Alice", 101, 5000);
-        ContractEmployee contractEmp = new ContractEmployee("Bob", 102, 50, 160);
-
-        System.out.println("Full-Time Employee Details:");
-        fullTimeEmp.displayEmployeeInfo();
-        System.out.println("\nContract Employee Details:");
-        contractEmp.displayEmployeeInfo();
+        Employee[] employees = new Employee[2];
+        employees[0] = new FullTimeEmployee("John Doe", 1, 1000);
+        employees[1] = new ContractEmployee("Jane Doe", 2, 20, 40);
+        for (Employee e : employees){
+            e.displayEmployeeInfo();
+            System.out.println("Payment Amount: " + e.calculateSalary());
+        }
     }
 }
