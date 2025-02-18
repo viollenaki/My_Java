@@ -68,7 +68,7 @@ public class Main {
         employees[1] = new ContractEmployee("Akbar", 2, 20, 40);
         for (Employee e : employees){
             e.displayEmployeeInfo();
-            System.out.println("payment Amount--- " + e.calculateSalary());
+            System.out.println("payment amount--- " + e.calculateSalary());
         }
     }
 }
