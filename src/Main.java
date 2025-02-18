@@ -1,7 +1,7 @@
 abstract class Employee {
-    protected String name;
-    protected int id;
-    protected double base;
+    String name;
+    int id;
+    double base;
 
     public Employee(String name, int id, double base) {
         this.name = name;
