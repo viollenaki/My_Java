@@ -1,3 +1,4 @@
+
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
@@ -68,7 +69,7 @@ class School {
             System.out.println("Student not found");
         }
     }
-    
+
     public void getStudent(Integer id) {
         Student student = students.get(id);
         if (student != null) {
@@ -77,7 +78,7 @@ class School {
             System.out.println("Student not found");
         }
     }
-    
+
     public void updateStudent(int id, String name, int age, Set<String> courses) {
         Student student = students.get(id);
         if (student != null) {
@@ -87,7 +88,6 @@ class School {
             System.out.println("Student not found");
         }
     }
-    
 
     public void getSortedById() {
         TreeSet<Integer> ids = new TreeSet<>(students.keySet());
@@ -95,7 +95,6 @@ class School {
             students.get(i).getInfo();
         }
     }
-
 
     public void getCourseStudents(String course) {
         for (Integer i : students.keySet()) {
