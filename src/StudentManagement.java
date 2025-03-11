@@ -1,4 +1,3 @@
-
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
@@ -118,7 +117,5 @@ public class StudentManagement {
         school.getStudent(66);
         school.getCourseStudents("Math");
         school.deleteStudent(66);
-        school.deleteStudent(66);
-
     }
 }

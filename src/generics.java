@@ -38,9 +38,9 @@ class Storage<T> {
     }
 
     public void displayAll() {
-        System.out.println("Элементы хранилища:");
+        System.out.println("Элементы хранилища");
         for (int i = 0; i < elements.size(); i++) {
-            System.out.println(i + ": " + elements.get(i));
+            System.out.println(i + " ->" + elements.get(i));
         }
     }
 }
@@ -59,46 +59,44 @@ public class generics {
 
     public static void main(String[] args) {
         Storage<Integer> for_int = new Storage<>();
+
         for_int.add(10);
         for_int.add(20);
         for_int.add(30);
         for_int.add(40);
 
-        System.out.println("=== Тестирование хранилища Integer ===");
-        System.out.println("Размер хранилища: " + for_int.size());
+        System.out.println("Размер " + for_int.size());
         for_int.displayAll();
 
-        System.out.println("Элемент по индексу 1: " + for_int.get(1));
+        System.out.println(for_int.get(1));
         for_int.remove(1);
-        System.out.println("После удаления элемента по индексу 1:");
         for_int.displayAll();
 
         Storage<String> for_string = new Storage<>();
+
         for_string.add("Привет");
         for_string.add("Мир");
         for_string.add("Java");
         for_string.add("Generics");
 
-        System.out.println("\n=== Тестирование хранилища String ===");
-        System.out.println("Размер хранилища: " + for_string.size());
+        System.out.println("Размер " + for_string.size());
         for_string.displayAll();
 
-        System.out.println("Элемент по индексу 2: " + for_string.get(2));
+        System.out.println("Элемент 2: " + for_string.get(2));
         for_string.remove("Мир");
-        System.out.println("После удаления элемента 'Мир':");
         for_string.displayAll();
 
         Storage<Double> for_double = new Storage<>();
+
         for_double.add(3.14);
         for_double.add(2.71);
         for_double.add(1.618);
 
-        System.out.println("\n=== Тестирование хранилища Double ===");
-        System.out.println("Размер хранилища: " + for_double.size());
+        System.out.println("Размер " + for_double.size());
         for_double.displayAll();
 
-        System.out.println("\n=== Тестирование утилитарного метода ===");
         List<String> stringList = new ArrayList<>();
+
         stringList.add("Один");
         stringList.add("Два");
         stringList.add("Три");
