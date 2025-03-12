@@ -44,7 +44,6 @@ class Storage<T> {
         }
     }
 }
-
 class Util_class {
 
     public static <E> void printList(List<E> list) {
@@ -54,7 +53,6 @@ class Util_class {
         }
     }
 }
-
 public class generics {
 
     public static void main(String[] args) {
