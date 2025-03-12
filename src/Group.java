@@ -58,7 +58,7 @@ class TaskScheduler {
     public void addTask(Task task) {
         scheduledTasks.add(task);
         scheduledTasks.sort(null);
-        System.out.println("Task Added: " + task);
+        System.out.println("Task added: " + task);
     }
 
     public void processNextTask() {
@@ -123,9 +123,9 @@ class TaskScheduler {
     }
 
     public void showAllTasks() {
-        System.out.println("\nScheduled Tasks (sorted by priority):");
+        System.out.println("\nScheduled tasks:");
         if (scheduledTasks.isEmpty()) {
-            System.out.println("(No scheduled tasks)");
+            System.out.println("No scheduled tasks");
         } else {
             int i = 1;
             for (Task task : scheduledTasks) {
@@ -134,9 +134,8 @@ class TaskScheduler {
             }
         }
         
-        System.out.println("\nPending Tasks (FIFO Order):");
         if (pendingTasks.isEmpty()) {
-            System.out.println("(No pending tasks)");
+            System.out.println("No pending tasks");
         } else {
             int i = 1;
             for (Task task : pendingTasks) {
